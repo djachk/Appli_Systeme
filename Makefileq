@@ -1,0 +1,23 @@
+GCC=gcc -g -Wall 
+
+all : quicksortq
+
+quicksortq: quicksort.o schedq.o sched.h
+	$(GCC) -o quicksortq quicksort.o schedq.o -pthread
+
+quicksort.o: quicksort.c sched.h
+	$(GCC) -o quicksort.o -c quicksort.c
+
+schedq.o: schedq.c sched.h
+	$(GCC) -o schedq.o -c schedq.c
+
+clean : 
+	rm *.o quicksortq cartegen
+
+
+
+cartegen: cartegen.o schedq.o sched.h
+	$(GCC) -o cartegen cartegen.o schedq.o -pthread -lm  -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -L/usr/lib/x86_64-linux-gnu -lSDL
+
+cartegen.o: cartegen.c sched.h
+	$(GCC) -o cartegen.o -c cartegen.c -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -L/usr/lib/x86_64-linux-gnu -lSDL

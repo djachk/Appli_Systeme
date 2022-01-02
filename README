@@ -1,0 +1,13 @@
+pour obtenir quicksort (version 1 seule pile)
+$ make
+
+pour obtenir quicksortq (version avec les piles deque)
+$ make -f Makefileq
+et executer ensuite quicksortq comme quicksort
+
+pour obtenir cartegen (generation de carte aleatoire, sortir de l'appli en faisant Ctrl-C)
+$ make -f Makefileq cartegen
+
+pour executer ensuite cartegen 
+$ cartege -k k -a alt -t nthreads
+(k entre 2 et 15... dimension de la carte= 2^k, alt altitude typiquement 200) 
